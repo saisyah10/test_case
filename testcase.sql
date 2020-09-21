@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2020 at 04:30 PM
+-- Generation Time: Sep 21, 2020 at 07:13 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -44,7 +44,7 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `account_name`, `description`, `account_type`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'dummyyyyy', 'dummy4 lorem lorem lorem ipsum', 'dummy4', 'dummy4@gmail.com', '$2y$10$QX3Y22pEkXbTx6lth7njlewKpv.dl.cGw7LiYihGNfzic37.M8Qe6', NULL, '2020-09-19 07:43:07', '2020-09-20 05:53:33'),
+(1, 'dummyyyyy', 'dummy4 lorem lorem lorem ipsum', 'dummy4', 'dummy00@gmail.com', '$2y$10$jD/PHYvqXV6dWFaneoENJOyw6DS/85vuDXPQdsBoXERbagfAGza8q', NULL, '2020-09-19 07:43:07', '2020-09-20 20:55:12'),
 (2, 'dummy4', 'dummy4 lorem lorem lorem ipsum', 'dummy4', 'dummy4@gmail.com', 'qwertyui', '2020-09-20 05:51:23', '2020-09-19 07:52:11', '2020-09-20 05:51:23'),
 (3, 'dummy5', 'dummy5 lorem lorem lorem ipsum', 'dummy5', 'dummy5@gmail.com', 'qwertyui', NULL, '2020-09-20 00:30:39', '2020-09-20 00:30:39'),
 (4, 'dummy7', 'dummy5 lorem lorem lorem ipsum', 'dummy5', 'dummy7@gmail.com', 'qwertyui', NULL, '2020-09-20 02:44:52', '2020-09-20 02:44:52'),
@@ -81,7 +81,9 @@ CREATE TABLE `finances` (
 INSERT INTO `finances` (`id`, `id_account`, `title`, `description`, `amount`, `deleted_at`, `created_at`, `updated_at`) VALUES
 (1, 1, 'pemasukan', 'lorem ipsum lorem ipsum lorem ipsum', 500000, NULL, NULL, '2020-09-20 00:58:52'),
 (2, 1, 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum', 'lorem ipsum lorem ipsum lorem ipsum', 100000, NULL, '2020-09-20 00:54:00', '2020-09-20 01:13:31'),
-(3, 1, 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum', 'lorem ipsum lorem ipsum lorem ipsum', 500000, NULL, '2020-09-20 00:56:30', '2020-09-20 00:56:30');
+(3, 1, 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum', 'lorem ipsum lorem ipsum lorem ipsum', 500000, NULL, '2020-09-20 00:56:30', '2020-09-20 00:56:30'),
+(4, 12, 'pemasukan', 'lorem ipsum lorem ipsum lorem ipsum', 500000, NULL, '2020-09-20 21:02:31', '2020-09-20 21:02:31'),
+(5, 12, 'pengeluaran', 'lorem ipsum lorem ipsum lorem ipsum', 500000, NULL, '2020-09-20 21:02:54', '2020-09-20 21:02:54');
 
 -- --------------------------------------------------------
 
@@ -140,7 +142,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `finances`
 --
 ALTER TABLE `finances`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `migrations`
