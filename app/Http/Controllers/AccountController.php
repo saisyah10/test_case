@@ -81,7 +81,14 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validate($request, [
+            'account_name' => 'min:4',
+            'description' => 'min:10',
+            'account_type' => 'min:4',
+            'email' => 'required|min:5|unique:account',
+            'password' => 'required|min:8'
+        ]);
+
         $account_name = $request->input('account_name');
         $description = $request->input('description');
         $account_type = $request->input('account_type');
@@ -124,8 +131,8 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        $data = \App\Account::where('id',$id)->get();
-        if(count($data) > 0){ //mengecek apakah data kosong atau tidak
+        $data = \App\Account::where('id',$id)->first();
+        if($data){ //mengecek apakah data kosong atau tidak
             $res['message'] = "Success!";
             $res['values'] = $data;
             return response($res);
@@ -156,6 +163,14 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'account_name' => 'min:4',
+            'description' => 'min:10',
+            'account_type' => 'min:4',
+            'email' => 'required|min:5|unique:account',
+            'password' => 'required|min:8'
+        ]);
+
         $account_name = $request->input('account_name');
         $description = $request->input('description');
         $account_type = $request->input('account_type');

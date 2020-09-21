@@ -44,6 +44,13 @@ class FinanceController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'id_account' => 'required',
+            'title' => 'min:4',
+            'description' => 'min:10',
+            'amount' => 'required|min:4'
+        ]);
+
         $id_account = $request->input('id_account');
         $title = $request->input('title');
         $description = $request->input('description');
@@ -102,6 +109,13 @@ class FinanceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'id_account' => 'required',
+            'title' => 'min:4',
+            'description' => 'min:10',
+            'amount' => 'required|min:4'
+        ]);
+
         $id_account = $request->input('id_account');
         $title = $request->input('title');
         $description = $request->input('description');
@@ -152,6 +166,45 @@ class FinanceController extends Controller
         }
         else{
             $res['message'] = "Failed!";
+            return response($res);
+        }
+    }
+
+    public function report_daily($daily){
+        $data = \App\Finance::whereDay('created_at','=',$daily)->get();
+        if(count($data) > 0){ //mengecek apakah data kosong atau tidak
+            $res['message'] = "Report daily found!";
+            $res['values'] = $data;
+            return response($res);
+        }
+        else{
+            $res['message'] = "Report daily not found!";
+            return response($res);
+        }
+    }
+
+    public function report_monthly($monthly){
+        $data = \App\Finance::whereMonth('created_at','=',$monthly)->get();
+        if(count($data) > 0){ //mengecek apakah data kosong atau tidak
+            $res['message'] = "Report monthly found!";
+            $res['values'] = $data;
+            return response($res);
+        }
+        else{
+            $res['message'] = "Report monthly not found!";
+            return response($res);
+        }
+    }
+
+    public function filter($filter){
+        $data = \App\Finance::where('title',$filter)->paginate();
+        if(count($data) > 0){ //mengecek apakah data kosong atau tidak
+            $res['message'] = "Data found!";
+            $res['values'] = $data;
+            return response($res);
+        }
+        else{
+            $res['message'] = "Data not found!";
             return response($res);
         }
     }
